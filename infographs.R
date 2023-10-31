@@ -1,8 +1,18 @@
 library(tidyverse)
 library(taylor)
 library(ggridges)
-library(gt)
-library(gtExtras)
+library(spotifyr)
+# library(gt)
+# library(gtExtras)
+
+# Spotify API credentials -------------------------------------------------
+Sys.setenv(SPOTIFY_CLIENT_ID = 'b529464265704c7e98966a15941616ef')
+Sys.setenv(SPOTIFY_CLIENT_SECRET = '3b891564daa54b32829db99a97472f2d')
+
+access_token <- get_spotify_access_token()
+
+
+tswift <- get_artist_audio_features('taylor swift')
 
 # Albums ----
 cover_links <- c(
@@ -71,5 +81,3 @@ p <-
   )
 
 p
-
-gt::gt(p)
